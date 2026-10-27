@@ -1,6 +1,6 @@
 import React from 'react';
-import LaunchScreen from './src/components/screens/LaunchScreen';
+import LaunchScreenB from './src/components/screens/LaunchScreenB';
 
 export default function App() {
-  return <LaunchScreen />;
+  return <LaunchScreenB />;
 }

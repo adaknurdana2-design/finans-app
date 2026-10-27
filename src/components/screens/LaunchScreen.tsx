@@ -1,16 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function LaunchScreen() {
+export default function LaunchScreenA() {
   return (
     <View style={styles.container}>
-      {/* Ортасындағы логотип немесе атау */}
       <View style={styles.logoContainer}>
-        <View style={styles.iconBox}>
-          {/* Мұнда графикалық иконка орнына символ немесе сурет қоюға болады */}
-          <Text style={styles.iconText}>📈</Text>
-        </View>
-        <Text style={styles.logoTitle}>FinWise</Text>
+        <Text style={styles.icon}>📈</Text>
+        <Text style={styles.title}>FinWise</Text>
       </View>
     </View>
   );
@@ -19,29 +15,21 @@ export default function LaunchScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff', // Суреттегідей ақ фон
+    backgroundColor: '#4ECCA3', // Сүрәттәге яшел фон
     alignItems: 'center',
     justifyContent: 'center',
   },
   logoContainer: {
     alignItems: 'center',
   },
-  iconBox: {
-    width: 80,
-    height: 80,
-    backgroundColor: '#E8F5E9', // Ақшыл жасыл фон
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
+  icon: {
+    fontSize: 50,
+    marginBottom: 10,
   },
-  iconText: {
-    fontSize: 36,
-  },
-  logoTitle: {
-    fontSize: 28,
+  title: {
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#2E7D32', // Қою жасыл түс (FinWise жазуы)
+    color: '#FFFFFF',
     letterSpacing: 1,
   },
 });

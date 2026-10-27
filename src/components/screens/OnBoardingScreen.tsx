@@ -1,33 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function OnBoardingScreen() {
+export default function OnBoardingScreenA() {
   return (
     <View style={styles.container}>
-      {/* Жоғарғы мәтін */}
-      <View style={styles.headerContainer}>
+      {/* Өске яшел фондагы язулар */}
+      <View style={styles.topSection}>
         <Text style={styles.title}>Welcome To</Text>
         <Text style={styles.subtitle}>Expense Manager</Text>
       </View>
 
-      {/* Ортасындағы иллюстрация орны (суреттің орнына блок) */}
-      <View style={styles.imageBox}>
-        <Text style={styles.imageEmoji}>🪙💳</Text>
-      </View>
-
-      {/* Төменгі бөлік (Индикаторлар мен батырма) */}
-      <View style={styles.footer}>
-        {/* Беттің қай жерде тұрғанын көрсететін нүктелер */}
-        <View style={styles.dotsContainer}>
-          <View style={[styles.dot, styles.activeDot]} />
-          <View style={styles.dot} />
-          <View style={styles.dot} />
+      {/* Аскы ак блок */}
+      <View style={styles.bottomSection}>
+        <View style={styles.imageBox}>
+          <Text style={styles.emoji}>🪙🤲</Text>
         </View>
 
-        {/* Next батырмасы */}
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+
+        {/* Индикатор нөктәләре */}
+        <View style={styles.dotsContainer}>
+          <View style={[styles.dot, styles.activeDot]} />
+          <View style={styles.dot} />
+        </View>
       </View>
     </View>
   );
@@ -36,67 +33,72 @@ export default function OnBoardingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff', // Ақ фон
+    backgroundColor: '#4ECCA3',
+  },
+  topSection: {
+    flex: 0.4,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 60,
     paddingHorizontal: 20,
   },
-  headerContainer: {
-    alignItems: 'center',
-    marginTop: 20,
-  },
   title: {
-    fontSize: 22,
-    color: '#757575',
+    fontSize: 20,
+    color: '#FFFFFF',
     fontWeight: '500',
   },
   subtitle: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#1b5e20', // Қою жасыл түс
+    color: '#FFFFFF',
     marginTop: 5,
+    textAlign: 'center',
+  },
+  bottomSection: {
+    flex: 0.6,
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 40,
+    paddingHorizontal: 24,
   },
   imageBox: {
-    width: 240,
-    height: 240,
-    backgroundColor: '#e8f5e9', // Ақшыл жасыл фон
-    borderRadius: 120,
+    width: 180,
+    height: 180,
+    backgroundColor: '#E8F5E9',
+    borderRadius: 90,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  imageEmoji: {
+  emoji: {
     fontSize: 50,
   },
-  footer: {
+  button: {
     width: '100%',
+    backgroundColor: '#2E7D32',
+    paddingVertical: 16,
+    borderRadius: 25,
     alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   dotsContainer: {
     flexDirection: 'row',
-    marginBottom: 30,
+    alignItems: 'center',
   },
   dot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#c8e6c9',
+    backgroundColor: '#E0E0E0',
     marginHorizontal: 4,
   },
   activeDot: {
-    backgroundColor: '#2e7d32',
-    width: 22, // Белсенді нүкте ұзындау болады
-  },
-  button: {
-    width: '100%',
-    backgroundColor: '#2e7d32', // Жасыл батырма
-    paddingVertical: 16,
-    borderRadius: 14,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    backgroundColor: '#2E7D32',
+    width: 20,
   },
 });

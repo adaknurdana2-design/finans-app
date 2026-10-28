@@ -5,31 +5,35 @@ export default function LaunchScreenA() {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Text style={styles.icon}>📈</Text>
+        <View style={styles.iconWrapper}>
+          <Text style={styles.iconSymbol}>📈</Text>
+        </View>
         <Text style={styles.title}>FinWise</Text>
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4ECCA3', // Сүрәттәге яшел фон
+    backgroundColor: '#38CB89', 
     alignItems: 'center',
     justifyContent: 'center',
   },
   logoContainer: {
     alignItems: 'center',
   },
-  icon: {
-    fontSize: 50,
-    marginBottom: 10,
+  iconWrapper: {
+    marginBottom: 12,
+  },
+  iconSymbol: {
+    fontSize: 55,
+    color: '#FFFFFF',
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontSize: 34,
+    fontWeight: '700',
     color: '#FFFFFF',
-    letterSpacing: 1,
+    letterSpacing: 0.5,
   },
 });

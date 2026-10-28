@@ -4,28 +4,30 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export default function LaunchScreenB() {
   return (
     <View style={styles.container}>
-      {/* Логотип менән атамасы */}
-      <View style={styles.logoContainer}>
-        <Text style={styles.icon}>📈</Text>
-        <Text style={styles.title}>FinWise</Text>
-        <Text style={styles.subtitle}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-        </Text>
-      </View>
+      <View style={styles.contentContainer}>
+        {/* Жоғарғы логотип пен мәтін */}
+        <View style={styles.logoBox}>
+          <Text style={styles.iconSymbol}>📈</Text>
+          <Text style={styles.title}>FinWise</Text>
+          <Text style={styles.description}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+          </Text>
+        </View>
 
-      {/* Төймәләр бөлеше */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>Log In</Text>
-        </TouchableOpacity>
+        {/* Төменгі батырмалар */}
+        <View style={styles.bottomSection}>
+          <TouchableOpacity style={styles.primaryButton}>
+            <Text style={styles.primaryButtonText}>Log In</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.secondaryButton}>
-          <Text style={styles.secondaryButtonText}>Sign Up</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.secondaryButton}>
+            <Text style={styles.secondaryButtonText}>Sign Up</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Text style={styles.forgotText}>Forgot Password?</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.forgotTouch}>
+            <Text style={styles.forgotText}>Forgot Password?</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -34,64 +36,78 @@ export default function LaunchScreenB() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7FFF9', // Асык ак/яшел фон
+    backgroundColor: '#F4FBF7', // Жұмсақ ақшыл-жасыл фон
+  },
+  contentContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 70,
     paddingHorizontal: 24,
   },
-  logoContainer: {
+  logoBox: {
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 60,
   },
-  icon: {
+  iconSymbol: {
     fontSize: 50,
-    marginBottom: 10,
+    color: '#38CB89',
+    marginBottom: 8,
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: '700',
     color: '#2E7D32',
     marginBottom: 10,
   },
-  subtitle: {
+  description: {
     fontSize: 12,
-    color: '#757575',
+    color: '#8C98A8',
     textAlign: 'center',
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
+    lineHeight: 18,
   },
-  buttonContainer: {
+  bottomSection: {
     width: '100%',
     alignItems: 'center',
   },
   primaryButton: {
     width: '100%',
-    backgroundColor: '#4ECCA3',
+    backgroundColor: '#38CB89',
     paddingVertical: 16,
-    borderRadius: 25,
+    borderRadius: 28,
     alignItems: 'center',
-    marginBottom: 14,
+    marginBottom: 12,
+    shadowColor: '#38CB89',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   primaryButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   secondaryButton: {
     width: '100%',
-    backgroundColor: '#E8F5E9',
+    backgroundColor: '#E2F4EC',
     paddingVertical: 16,
-    borderRadius: 25,
+    borderRadius: 28,
     alignItems: 'center',
     marginBottom: 20,
   },
   secondaryButtonText: {
     color: '#2E7D32',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
+  },
+  forgotTouch: {
+    padding: 5,
   },
   forgotText: {
     color: '#555555',
-    fontSize: 14,
+    fontSize: 13,
+    fontWeight: '500',
   },
 });

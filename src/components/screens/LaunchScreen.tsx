@@ -1,39 +1,112 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function LaunchScreenA() {
+interface LaunchScreenProps {
+  onNavigateToLogin: () => void;
+  onNavigateToRegister: () => void;
+  onNavigateToForgot: () => void;
+}
+
+export default function LaunchScreen({
+  onNavigateToLogin,
+  onNavigateToRegister,
+  onNavigateToForgot,
+}: LaunchScreenProps) {
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <View style={styles.iconWrapper}>
-          <Text style={styles.iconSymbol}>📈</Text>
-        </View>
+      <View style={styles.logoBox}>
+        <Text style={styles.icon}>📈</Text>
         <Text style={styles.title}>FinWise</Text>
+        <Text style={styles.subtitle}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+        </Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        {/* Log In батырмасы */}
+        <TouchableOpacity style={styles.primaryButton} onPress={onNavigateToLogin}>
+          <Text style={styles.primaryButtonText}>Log In</Text>
+        </TouchableOpacity>
+
+        {/* Sign Up батырмасы */}
+        <TouchableOpacity style={styles.secondaryButton} onPress={onNavigateToRegister}>
+          <Text style={styles.secondaryButtonText}>Sign Up</Text>
+        </TouchableOpacity>
+
+        {/* Forgot Password сілтемесі */}
+        <TouchableOpacity onPress={onNavigateToForgot} style={styles.forgotTouch}>
+          <Text style={styles.forgotText}>Forgot Password?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#38CB89', 
+    backgroundColor: '#F7FFF9',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 70,
+    paddingHorizontal: 24,
   },
-  logoContainer: {
+  logoBox: {
     alignItems: 'center',
+    marginTop: 40,
   },
-  iconWrapper: {
-    marginBottom: 12,
-  },
-  iconSymbol: {
+  icon: {
     fontSize: 55,
-    color: '#FFFFFF',
+    marginBottom: 10,
   },
   title: {
-    fontSize: 34,
-    fontWeight: '700',
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#2E7D32',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 12,
+    color: '#757575',
+    textAlign: 'center',
+    paddingHorizontal: 15,
+    lineHeight: 18,
+  },
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  primaryButton: {
+    width: '100%',
+    backgroundColor: '#4ECCA3',
+    paddingVertical: 16,
+    borderRadius: 25,
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  primaryButtonText: {
     color: '#FFFFFF',
-    letterSpacing: 0.5,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  secondaryButton: {
+    width: '100%',
+    backgroundColor: '#E8F5E9',
+    paddingVertical: 16,
+    borderRadius: 25,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  secondaryButtonText: {
+    color: '#2E7D32',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  forgotTouch: {
+    padding: 5,
+  },
+  forgotText: {
+    color: '#555555',
+    fontSize: 14,
   },
 });

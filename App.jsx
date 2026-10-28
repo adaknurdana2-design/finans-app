@@ -7,9 +7,12 @@ import SecurityPinScreen from './src/components/screens/SecurityPinScreen';
 import NewPasswordScreen from './src/components/screens/NewPasswordScreen';
 import SuccessScreen from './src/components/screens/SuccessScreen';
 import HomeScreen from './src/components/screens/HomeScreen';
+import NotificationScreen from './src/components/screens/NotificationScreen'; // Хабарлама экранын импорттаймыз
 
 export default function App() {
+  // Қай экранда тұрғанымызды бақылайтын күй (state)
   const [currentScreen, setCurrentScreen] = useState('launch');
+
 
   if (currentScreen === 'login') {
     return (
@@ -21,9 +24,11 @@ export default function App() {
     );
   }
 
+ 
   if (currentScreen === 'register') {
     return <RegisterScreen onNavigateToLogin={() => setCurrentScreen('login')} />;
   }
+
 
   if (currentScreen === 'forgot') {
     return (
@@ -34,6 +39,7 @@ export default function App() {
     );
   }
 
+
   if (currentScreen === 'securityPin') {
     return (
       <SecurityPinScreen
@@ -43,6 +49,7 @@ export default function App() {
     );
   }
 
+
   if (currentScreen === 'newPassword') {
     return (
       <NewPasswordScreen
@@ -50,6 +57,7 @@ export default function App() {
       />
     );
   }
+
 
   if (currentScreen === 'success') {
     return (
@@ -59,9 +67,23 @@ export default function App() {
     );
   }
 
+
   if (currentScreen === 'home') {
-    return <HomeScreen />;
+    return (
+      <HomeScreen
+        onOpenNotification={() => setCurrentScreen('notification')}
+      />
+    );
   }
+
+  if (currentScreen === 'notification') {
+    return (
+      <NotificationScreen
+        onBackToHome={() => setCurrentScreen('home')}
+      />
+    );
+  }
+
 
   return (
     <LaunchScreen

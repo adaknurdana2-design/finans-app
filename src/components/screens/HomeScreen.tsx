@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function HomeScreen() {
+interface HomeScreenProps {
+  onOpenNotification: () => void;
+}
+
+export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Жоғарғы мәтін мен хабарлама белгішесі */}
@@ -10,9 +14,9 @@ export default function HomeScreen() {
           <Text style={styles.welcomeText}>Hi, Welcome Back</Text>
           <Text style={styles.subWelcomeText}>Good Morning</Text>
         </View>
-        <View style={styles.notificationBell}>
+        <TouchableOpacity style={styles.notificationBell} onPress={onOpenNotification}>
           <Text>🔔</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {/* Баланс карточкасы (Total Balance & Expense) */}

@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 
 interface HomeScreenProps {
   onOpenNotification: () => void;
+  onOpenAccountBalance: () => void;
+  onOpenAnalysis: () => void;
 }
 
-export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
+export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, onOpenAnalysis }: HomeScreenProps) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Жоғарғы мәтін мен хабарлама белгішесі */}
@@ -19,8 +21,8 @@ export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
         </TouchableOpacity>
       </View>
 
-      {/* Баланс карточкасы (Total Balance & Expense) */}
-      <View style={styles.balanceCard}>
+      {/* Баланс карточкасы (Басқан кезде Account Balance экранына өтеді) */}
+      <TouchableOpacity style={styles.balanceCard} onPress={onOpenAccountBalance} activeOpacity={0.9}>
         <View style={styles.balanceRow}>
           <View>
             <Text style={styles.balanceLabel}>📊 Total Balance</Text>
@@ -37,7 +39,7 @@ export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
           <View style={styles.progressBarFill} />
         </View>
         <Text style={styles.progressText}>30% Of Your Expanses, Looks Good.</Text>
-      </View>
+      </TouchableOpacity>
 
       {/* Орталық бөлік (Savings & Revenue) */}
       <View style={styles.statsCard}>
@@ -71,7 +73,7 @@ export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
         </TouchableOpacity>
       </View>
 
-      {/* Транзакциялар тізімі (Salary, Groceries, Rent) */}
+      {/* Транзакциялар тізімі */}
       <View style={styles.transactionList}>
         <View style={styles.transactionItem}>
           <View style={styles.transIconBox}><Text>💰</Text></View>
@@ -104,229 +106,58 @@ export default function HomeScreen({ onOpenNotification }: HomeScreenProps) {
         </View>
       </View>
 
-      {/* Төменгі навігация мәзірі (Bottom Navigation) */}
+      {/* Төменгі навигация мәзірі */}
       <View style={styles.bottomNav}>
-        <Text style={styles.navIconActive}>🏠</Text>
-        <Text style={styles.navIcon}>📊</Text>
-        <Text style={styles.navIcon}>🔄</Text>
-        <Text style={styles.navIcon}>📦</Text>
-        <Text style={styles.navIcon}>👤</Text>
+        <TouchableOpacity><Text style={styles.navIconActive}>🏠</Text></TouchableOpacity>
+        <TouchableOpacity onPress={onOpenAnalysis}><Text style={styles.navIcon}>📊</Text></TouchableOpacity>
+        <TouchableOpacity><Text style={styles.navIcon}>🔄</Text></TouchableOpacity>
+        <TouchableOpacity><Text style={styles.navIcon}>📦</Text></TouchableOpacity>
+        <TouchableOpacity><Text style={styles.navIcon}>👤</Text></TouchableOpacity>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#4ECCA3',
-  },
-  contentContainer: {
-    paddingTop: 50,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  welcomeText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  subWelcomeText: {
-    fontSize: 12,
-    color: '#E8F5E9',
-  },
-  notificationBell: {
-    width: 36,
-    height: 36,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 18,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  balanceCard: {
-    backgroundColor: '#2E7D32',
-    borderRadius: 20,
-    padding: 20,
-    marginBottom: 15,
-  },
-  balanceRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-  },
-  balanceLabel: {
-    fontSize: 11,
-    color: '#C8E6C9',
-  },
-  balanceAmount: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginTop: 4,
-  },
-  expenseAmount: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#81D4FA',
-    marginTop: 4,
-  },
-  progressBarBg: {
-    height: 6,
-    backgroundColor: '#1B5E20',
-    borderRadius: 3,
-    marginBottom: 8,
-  },
-  progressBarFill: {
-    width: '30%',
-    height: '100%',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 3,
-  },
-  progressText: {
-    fontSize: 11,
-    color: '#C8E6C9',
-  },
-  statsCard: {
-    backgroundColor: '#F7FFF9',
-    borderRadius: 20,
-    padding: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  savingsBox: {
-    alignItems: 'center',
-    flex: 1,
-    borderRightWidth: 1,
-    borderRightColor: '#E0E0E0',
-    paddingRight: 10,
-  },
-  circleIcon: {
-    fontSize: 30,
-    marginBottom: 5,
-  },
-  savingsTitle: {
-    fontSize: 11,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
-  },
-  statsDetails: {
-    flex: 1.5,
-    paddingLeft: 15,
-  },
-  statItem: {
-    marginVertical: 4,
-  },
-  statLabel: {
-    fontSize: 10,
-    color: '#777',
-  },
-  statValueGreen: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#2E7D32',
-  },
-  statValueRed: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#D32F2F',
-  },
-  statDivider: {
-    height: 1,
-    backgroundColor: '#E0E0E0',
-    marginVertical: 4,
-  },
-  filterTabContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#E8F5E9',
-    borderRadius: 25,
-    padding: 4,
-    marginBottom: 20,
-  },
-  filterButton: {
-    flex: 1,
-    paddingVertical: 8,
-    alignItems: 'center',
-    borderRadius: 20,
-  },
-  activeFilterButton: {
-    backgroundColor: '#2E7D32',
-  },
-  filterText: {
-    fontSize: 12,
-    color: '#555',
-    fontWeight: '500',
-  },
-  activeFilterText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
-  transactionList: {
-    backgroundColor: '#F7FFF9',
-    borderRadius: 20,
-    padding: 15,
-    marginBottom: 20,
-  },
-  transactionItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  transIconBox: {
-    width: 35,
-    height: 35,
-    backgroundColor: '#E8F5E9',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  transInfo: {
-    flex: 1,
-  },
-  transTitle: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  transDate: {
-    fontSize: 10,
-    color: '#888',
-  },
-  transCategory: {
-    fontSize: 11,
-    color: '#666',
-    marginRight: 10,
-  },
-  transAmountGreen: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#2E7D32',
-  },
-  transAmountRed: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#2E7D32',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#F7FFF9',
-    paddingVertical: 12,
-    borderRadius: 25,
-  },
-  navIcon: {
-    fontSize: 18,
-    opacity: 0.5,
-  },
-  navIconActive: {
-    fontSize: 18,
-  },
+  container: { flex: 1, backgroundColor: '#4ECCA3' },
+  contentContainer: { paddingTop: 50, paddingBottom: 20, paddingHorizontal: 20 },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
+  welcomeText: { fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' },
+  subWelcomeText: { fontSize: 12, color: '#E8F5E9' },
+  notificationBell: { width: 36, height: 36, backgroundColor: '#FFFFFF', borderRadius: 18, justifyContent: 'center', alignItems: 'center' },
+  balanceCard: { backgroundColor: '#2E7D32', borderRadius: 20, padding: 20, marginBottom: 15 },
+  balanceRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 },
+  balanceLabel: { fontSize: 11, color: '#C8E6C9' },
+  balanceAmount: { fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 },
+  expenseAmount: { fontSize: 20, fontWeight: 'bold', color: '#81D4FA', marginTop: 4 },
+  progressBarBg: { height: 6, backgroundColor: '#1B5E20', borderRadius: 3, marginBottom: 8 },
+  progressBarFill: { width: '30%', height: '100%', backgroundColor: '#FFFFFF', borderRadius: 3 },
+  progressText: { fontSize: 11, color: '#C8E6C9' },
+  statsCard: { backgroundColor: '#F7FFF9', borderRadius: 20, padding: 15, flexDirection: 'row', alignItems: 'center', marginBottom: 15 },
+  savingsBox: { alignItems: 'center', flex: 1, borderRightWidth: 1, borderRightColor: '#E0E0E0', paddingRight: 10 },
+  circleIcon: { fontSize: 30, marginBottom: 5 },
+  savingsTitle: { fontSize: 11, fontWeight: 'bold', color: '#333', textAlign: 'center' },
+  statsDetails: { flex: 1.5, paddingLeft: 15 },
+  statItem: { marginVertical: 4 },
+  statLabel: { fontSize: 10, color: '#777' },
+  statValueGreen: { fontSize: 13, fontWeight: 'bold', color: '#2E7D32' },
+  statValueRed: { fontSize: 13, fontWeight: 'bold', color: '#D32F2F' },
+  statDivider: { height: 1, backgroundColor: '#E0E0E0', marginVertical: 4 },
+  filterTabContainer: { flexDirection: 'row', backgroundColor: '#E8F5E9', borderRadius: 25, padding: 4, marginBottom: 20 },
+  filterButton: { flex: 1, paddingVertical: 8, alignItems: 'center', borderRadius: 20 },
+  activeFilterButton: { backgroundColor: '#2E7D32' },
+  filterText: { fontSize: 12, color: '#555', fontWeight: '500' },
+  activeFilterText: { color: '#FFFFFF', fontWeight: 'bold' },
+  transactionList: { backgroundColor: '#F7FFF9', borderRadius: 20, padding: 15, marginBottom: 20 },
+  transactionItem: { flexDirection: 'row', alignItems: 'center', marginBottom: 15 },
+  transIconBox: { width: 35, height: 35, backgroundColor: '#E8F5E9', borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginRight: 10 },
+  transInfo: { flex: 1 },
+  transTitle: { fontSize: 13, fontWeight: 'bold', color: '#333' },
+  transDate: { fontSize: 10, color: '#888' },
+  transCategory: { fontSize: 11, color: '#666', marginRight: 10 },
+  transAmountGreen: { fontSize: 13, fontWeight: 'bold', color: '#2E7D32' },
+  transAmountRed: { fontSize: 13, fontWeight: 'bold', color: '#D32F2F' },
+  bottomNav: { flexDirection: 'row', justifyContent: 'space-around', backgroundColor: '#F7FFF9', paddingVertical: 12, borderRadius: 25 },
+  navIcon: { fontSize: 18, opacity: 0.5 },
+  navIconActive: { fontSize: 18 },
 });

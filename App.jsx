@@ -7,12 +7,12 @@ import SecurityPinScreen from './src/components/screens/SecurityPinScreen';
 import NewPasswordScreen from './src/components/screens/NewPasswordScreen';
 import SuccessScreen from './src/components/screens/SuccessScreen';
 import HomeScreen from './src/components/screens/HomeScreen';
-import NotificationScreen from './src/components/screens/NotificationScreen'; // Хабарлама экранын импорттаймыз
+import NotificationScreen from './src/components/screens/NotificationScreen';
+import AccountBalanceScreen from './src/components/screens/AccountBalanceScreen';
+import QuicklyAnalysisScreen from './src/components/screens/QuicklyAnalysisScreen'; // Импорт
 
 export default function App() {
-  // Қай экранда тұрғанымызды бақылайтын күй (state)
   const [currentScreen, setCurrentScreen] = useState('launch');
-
 
   if (currentScreen === 'login') {
     return (
@@ -24,11 +24,9 @@ export default function App() {
     );
   }
 
- 
   if (currentScreen === 'register') {
     return <RegisterScreen onNavigateToLogin={() => setCurrentScreen('login')} />;
   }
-
 
   if (currentScreen === 'forgot') {
     return (
@@ -39,7 +37,6 @@ export default function App() {
     );
   }
 
-
   if (currentScreen === 'securityPin') {
     return (
       <SecurityPinScreen
@@ -49,7 +46,6 @@ export default function App() {
     );
   }
 
-
   if (currentScreen === 'newPassword') {
     return (
       <NewPasswordScreen
@@ -57,7 +53,6 @@ export default function App() {
       />
     );
   }
-
 
   if (currentScreen === 'success') {
     return (
@@ -67,11 +62,12 @@ export default function App() {
     );
   }
 
-
   if (currentScreen === 'home') {
     return (
       <HomeScreen
         onOpenNotification={() => setCurrentScreen('notification')}
+        onOpenAccountBalance={() => setCurrentScreen('accountBalance')}
+        onOpenAnalysis={() => setCurrentScreen('analysis')}
       />
     );
   }
@@ -84,6 +80,23 @@ export default function App() {
     );
   }
 
+  if (currentScreen === 'accountBalance') {
+    return (
+      <AccountBalanceScreen
+        onBackToHome={() => setCurrentScreen('home')}
+        onOpenNotification={() => setCurrentScreen('notification')}
+      />
+    );
+  }
+
+  if (currentScreen === 'analysis') {
+    return (
+      <QuicklyAnalysisScreen
+        onBackToHome={() => setCurrentScreen('home')}
+        onOpenNotification={() => setCurrentScreen('notification')}
+      />
+    );
+  }
 
   return (
     <LaunchScreen

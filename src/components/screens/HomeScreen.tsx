@@ -21,7 +21,7 @@ export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, o
         </TouchableOpacity>
       </View>
 
-      {/* Баланс карточкасы (Басқан кезде Account Balance экранына өтеді) */}
+      {/* Баланс карточкасы */}
       <TouchableOpacity style={styles.balanceCard} onPress={onOpenAccountBalance} activeOpacity={0.9}>
         <View style={styles.balanceRow}>
           <View>
@@ -34,7 +34,6 @@ export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, o
           </View>
         </View>
 
-        {/* Прогресс жолағы */}
         <View style={styles.progressBarBg}>
           <View style={styles.progressBarFill} />
         </View>
@@ -60,17 +59,11 @@ export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, o
         </View>
       </View>
 
-      {/* Күнтізбе/Кезең таңдау (Daily, Weekly, Monthly) */}
+      {/* Күнтізбе/Кезең таңдау */}
       <View style={styles.filterTabContainer}>
-        <TouchableOpacity style={styles.filterButton}>
-          <Text style={styles.filterText}>Daily</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.filterButton}>
-          <Text style={styles.filterText}>Weekly</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.filterButton, styles.activeFilterButton]}>
-          <Text style={[styles.filterText, styles.activeFilterText]}>Monthly</Text>
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.filterButton}><Text style={styles.filterText}>Daily</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.filterButton}><Text style={styles.filterText}>Weekly</Text></TouchableOpacity>
+        <TouchableOpacity style={[styles.filterButton, styles.activeFilterButton]}><Text style={[styles.filterText, styles.activeFilterText]}>Monthly</Text></TouchableOpacity>
       </View>
 
       {/* Транзакциялар тізімі */}
@@ -94,19 +87,9 @@ export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, o
           <Text style={styles.transCategory}>Pantry</Text>
           <Text style={styles.transAmountRed}>-$100,00</Text>
         </View>
-
-        <View style={styles.transactionItem}>
-          <View style={styles.transIconBox}><Text>🏠</Text></View>
-          <View style={styles.transInfo}>
-            <Text style={styles.transTitle}>Rent</Text>
-            <Text style={styles.transDate}>8:30 - April 15</Text>
-          </View>
-          <Text style={styles.transCategory}>Rent</Text>
-          <Text style={styles.transAmountRed}>-$674,40</Text>
-        </View>
       </View>
 
-      {/* Төменгі навигация мәзірі */}
+      {/* Төменгі навигация мәзірі (График батырмасы арқылы Analysis бетіне өтеді) */}
       <View style={styles.bottomNav}>
         <TouchableOpacity><Text style={styles.navIconActive}>🏠</Text></TouchableOpacity>
         <TouchableOpacity onPress={onOpenAnalysis}><Text style={styles.navIcon}>📊</Text></TouchableOpacity>

@@ -5,9 +5,15 @@ interface HomeScreenProps {
   onOpenNotification: () => void;
   onOpenAccountBalance: () => void;
   onOpenAnalysis: () => void;
+  onOpenTransaction: () => void; // <-- ЖАҢА ҚОСЫЛДЫ
 }
 
-export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, onOpenAnalysis }: HomeScreenProps) {
+export default function HomeScreen({ 
+  onOpenNotification, 
+  onOpenAccountBalance, 
+  onOpenAnalysis,
+  onOpenTransaction // <-- ЖАҢА ҚОСЫЛДЫ
+}: HomeScreenProps) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Жоғарғы мәтін мен хабарлама белгішесі */}
@@ -89,11 +95,16 @@ export default function HomeScreen({ onOpenNotification, onOpenAccountBalance, o
         </View>
       </View>
 
-      {/* Төменгі навигация мәзірі (График батырмасы арқылы Analysis бетіне өтеді) */}
+      {/* Төменгі навигация мәзірі (Айналым батырмасы қосылды) */}
       <View style={styles.bottomNav}>
         <TouchableOpacity><Text style={styles.navIconActive}>🏠</Text></TouchableOpacity>
         <TouchableOpacity onPress={onOpenAnalysis}><Text style={styles.navIcon}>📊</Text></TouchableOpacity>
-        <TouchableOpacity><Text style={styles.navIcon}>🔄</Text></TouchableOpacity>
+        
+        {/* Айналым батырмасы басқан кезде Transaction беті ашылады */}
+        <TouchableOpacity onPress={onOpenTransaction}>
+          <Text style={styles.navIcon}>🔄</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity><Text style={styles.navIcon}>📦</Text></TouchableOpacity>
         <TouchableOpacity><Text style={styles.navIcon}>👤</Text></TouchableOpacity>
       </View>

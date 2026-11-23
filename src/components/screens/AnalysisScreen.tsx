@@ -14,7 +14,7 @@ export default function AnalysisScreen({
   onOpenBalance,
   onOpenQuickly,
 }: AnalysisScreenProps) {
-  const [activeTab, setActiveTab] = useState<'Daily' | 'Weekly' | 'Monthly' | 'Year'>('Weekly');
+  const [activeTab, setActiveTab] = useState<'Daily' | 'Weekly' | 'Monthly' | 'Year'>('Monthly');
 
   const getData = () => {
     switch (activeTab) {
@@ -49,28 +49,30 @@ export default function AnalysisScreen({
         };
       case 'Monthly':
         return {
-          income: '$4,120.00',
-          expense: '$1,187.40',
+          income: '$47,200.00',
+          expense: '$35,510.20',
           limit: '$20,000.00',
           percent: '30%',
           bars: [
-            { label: 'Jan', inc: 70, exp: 40 },
-            { label: 'Feb', inc: 55, exp: 60 },
-            { label: 'Mar', inc: 85, exp: 45 },
-            { label: 'Apr', inc: 60, exp: 35 },
+            { label: 'Jan', inc: 48, exp: 25 },
+            { label: 'Feb', inc: 35, exp: 14 },
+            { label: 'Mar', inc: 72, exp: 85 },
+            { label: 'Apr', inc: 22, exp: 34 },
+            { label: 'May', inc: 42, exp: 26 },
+            { label: 'Jun', inc: 32, exp: 12 },
           ],
         };
       case 'Year':
         return {
-          income: '$48,200.00',
+          income: '$430,560.00',
           expense: '$14,530.30',
           limit: '$100,000.00',
           percent: '45%',
           bars: [
-            { label: '2023', inc: 65, exp: 50 },
-            { label: '2024', inc: 75, exp: 45 },
-            { label: '2025', inc: 85, exp: 40 },
-            { label: '2026', inc: 95, exp: 30 },
+            { label: '2019', inc: 65, exp: 50 },
+            { label: '2020', inc: 75, exp: 45 },
+            { label: '2021', inc: 85, exp: 40 },
+            { label: '2022', inc: 95, exp: 30 },
           ],
         };
     }
@@ -99,7 +101,7 @@ export default function AnalysisScreen({
           <View style={styles.verticalDivider} />
           <View style={styles.balanceCol}>
             <Text style={styles.balanceLabel}>☑ Total Expense</Text>
-            <Text style={styles.expenseAmount}>-${currentData.expense.replace('$', '')}</Text>
+            <Text style={styles.expenseAmount}>-$1.187.40</Text>
           </View>
         </View>
 

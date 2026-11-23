@@ -14,24 +14,24 @@ export default function AnalysisScreen({
   onOpenBalance,
   onOpenQuickly,
 }: AnalysisScreenProps) {
-  const [activeTab, setActiveTab] = useState<'Daily' | 'Weekly' | 'Monthly' | 'Year'>('Monthly');
+  const [activeTab, setActiveTab] = useState<'Daily' | 'Weekly' | 'Monthly' | 'Year'>('Daily');
 
   const getData = () => {
     switch (activeTab) {
       case 'Daily':
         return {
           income: '$4,120.00',
-          expense: '$1,187.40',
+          expense: '$1.187.40',
           limit: '$20,000.00',
           percent: '30%',
           bars: [
-            { label: 'Mon', inc: 45, exp: 75 },
-            { label: 'Tue', inc: 15, exp: 45 },
-            { label: 'Wed', inc: 70, exp: 35 },
-            { label: 'Thu', inc: 10, exp: 55 },
-            { label: 'Fri', inc: 95, exp: 80 },
-            { label: 'Sat', inc: 30, exp: 10 },
-            { label: 'Sun', inc: 35, exp: 65 },
+            { label: 'Mon', inc: 42, exp: 72 },
+            { label: 'Tue', inc: 14, exp: 42 },
+            { label: 'Wed', inc: 66, exp: 32 },
+            { label: 'Thu', inc: 10, exp: 52 },
+            { label: 'Fri', inc: 92, exp: 78 },
+            { label: 'Sat', inc: 26, exp: 8 },
+            { label: 'Sun', inc: 30, exp: 64 },
           ],
         };
       case 'Weekly':
@@ -101,7 +101,7 @@ export default function AnalysisScreen({
           <View style={styles.verticalDivider} />
           <View style={styles.balanceCol}>
             <Text style={styles.balanceLabel}>☑ Total Expense</Text>
-            <Text style={styles.expenseAmount}>-$1.187.40</Text>
+            <Text style={styles.expenseAmount}>-${currentData.expense.replace('$', '')}</Text>
           </View>
         </View>
 

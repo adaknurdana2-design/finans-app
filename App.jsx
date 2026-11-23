@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
-import HomeScreen from './HomeScreen';
-import AnalysisScreen from './AnalysisScreen';
+import { View, StyleSheet } from 'react-native';
+import HomeScreen from './src/components/screens/HomeScreen';
+import AnalysisScreen from './src/components/screens/AnalysisScreen';
+import NotificationScreen from './src/components/screens/NotificationScreen';
+import AccountBalanceScreen from './src/components/screens/AccountBalanceScreen';
+import QuicklyAnalysisScreen from './src/components/screens/QuicklyAnalysisScreen';
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'Home' | 'Analysis'>('Home');
-
-  const handleOpenNotification = () => {
-    Alert.alert('Хабарламалар', 'Жаңа хабарламалар жоқ.');
-  };
+  const [currentScreen, setCurrentScreen] = useState('Home');
 
   return (
     <View style={styles.container}>
-      {currentScreen === 'Home' ? (
+      {currentScreen === 'Home' && (
         <HomeScreen
-          onOpenNotification={handleOpenNotification}
-          onOpenAccountBalance={() => Alert.alert('Account Balance', 'Баланс мәліметтері ашылуда')}
+          onOpenNotification={() => setCurrentScreen('Notifications')}
+          onOpenAccountBalance={() => setCurrentScreen('AccountBalance')}
           onOpenAnalysis={() => setCurrentScreen('Analysis')}
         />
-      ) : (
+      )}
+
+      {currentScreen === 'Analysis' && (
         <AnalysisScreen
           onBack={() => setCurrentScreen('Home')}
-          onOpenNotification={handleOpenNotification}
+          onOpenNotification={() => setCurrentScreen('Notifications')}
+          onOpenBalance={() => setCurrentScreen('AccountBalance')}
+          onOpenQuickly={() => setCurrentScreen('QuicklyAnalysis')}
+        />
+      )}
+
+      {currentScreen === 'Notifications' && (
+        <NotificationScreen
+          onBack={() => setCurrentScreen('Analysis')}
+        />
+      )}
+
+      {currentScreen === 'AccountBalance' && (
+        <AccountBalanceScreen
+          onBack={() => setCurrentScreen('Analysis')}
+        />
+      )}
+
+      {currentScreen === 'QuicklyAnalysis' && (
+        <QuicklyAnalysisScreen
+          onBack={() => setCurrentScreen('Analysis')}
         />
       )}
     </View>
@@ -31,6 +52,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4ECCA3',
+    backgroundColor: '#00D09E',
   },
 });
